@@ -58,3 +58,12 @@ git clone example.org/someproject
 cd someproject
 cargo build
 ```
+## Handle errors
+En este caso:
+```rust
+let guess: u32 = guess.trim().parse() {
+    Ok(num) => num,
+    Err(_) => continue, // continue --> go to the next iteration of the loop
+}
+```
+Si el usuario introduce un número, devolverá una variante `Ok` y seguirá con el programa. En cambio, si sale `Err`, se ejecutará `continue`. Esto irá a la siguiente interacción del loop (la siguiente interacción es introducir nuevamente el número)
