@@ -67,3 +67,25 @@ let guess: u32 = guess.trim().parse() {
 }
 ```
 Si el usuario introduce un número, devolverá una variante `Ok` y seguirá con el programa. En cambio, si sale `Err`, se ejecutará `continue`. Esto irá a la siguiente interacción del loop (la siguiente interacción es introducir nuevamente el número)
+
+# Conocimientos básicos de la Programación en Rust
+
+## Variables e inmutabilidades-
+
+Como hemos visto antes en el capítulo 2, las variables se pueden separar en dos grupos:
+
+- Valores mutables. El valor de podrá cambiar una segunda vez.
+- Valores inmutables. Una vez asignado del valor, este no se podrá cambiar.
+
+Ejemplo:
+```rust
+fn main() {
+  let x = 5; // immutable variable
+  println!("The value of x is: {}", x);
+  // x = 6; // error: cannot assign twice to immutable variable `x`
+  let mut y = 5; // mutable variable
+  println!("The value of y is: {}", y);
+  y = 6;
+  println!("The value of y is: {}", y);
+}
+```
