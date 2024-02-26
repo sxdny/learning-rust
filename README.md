@@ -123,3 +123,92 @@ usar el let para hacer cambios a la variable y después si queremos dejarla inmu
 
 Otra diferencia es que, como tecnicamente estamos creando otra variable, podemos
 cambiar el tipo de valor de esta si que no de un error.
+
+# Tipos de datos
+
+Cada valor en Rust tiene que tener un tipo de valor.
+
+Antes de todo, Rust tiene que saber cuáles son los tipos de datos de todas las variables que se vaya a utilizar en el programa.
+
+Un ejemplo es el siguiente:
+
+```rust
+let guess: u32 = "42".parse().expect("Not a number!");
+```
+Existen dos tipos de datos en Rust:
+- **Los Scalar**: que son los más básicos -> integer, float, booleanos y carácteres.
+- **Compound types:** son los que pueden almacenar varios valores dentro de un tipo de valor.
+
+## Scalar
+
+### Tipos de integers
+
+Principalmente, existen 2 tipos de integers:
+- Con signo. Se representan con una `i` delante del tamaño del integer.
+- Sin signo. Se representan con una `u` delante del tamaño del integer.
+
+| Length |Signed |Unsigned |
+|--------|-------|---------|
+|8-bit|	i8|	u8 |
+|16-bit |	i16 |	u16 |
+| 32-bit |	i32 |	u32 |
+| 64-bit |	i64 |	u64 |
+| 128-bit |	i128 |	u128 |
+| arch |	isize |	usize |
+
+Los valores con signo pueden almacenar número desde el -2 elevado a n - 1 hasta el 2 elevado a n menos 1.
+Por otro lado, los valores sin signo, solo pueden almacenar el 0 hasta el 2 elevado a n - 1 (no permiten número negativos)
+
+El `arch` depende de la arquitectura en la que se esta programando. Puede ser de 64 o 32 bits.
+
+## Compund types
+
+### Tuple
+
+Un tuple almacenar varios valores de distinto tipo. Un ejemplo es el siguiente:
+
+```rust
+let tup: (i32, f64, u8) = (500, 6.4, 1);
+```
+
+Después para acceder los valores, haremos lo siguiente:
+
+```rust
+let five_hundred = x.0;
+
+let six_point_four = x.1;
+
+let one = x.2;
+```
+
+### Array
+
+Podremos definiar una array de la siguiente manera:
+
+```rust
+let a = [1, 2, 3, 4, 5];
+```
+
+En las arrays, también podremos definir tipos de valores:
+
+```rust
+let a: [i32; 5] = [1, 2, 3, 4, 5];
+```
+
+Aquí el `i32` nos indica el tipo de valor y el `5` nos indica la longitud de la array.
+
+Podremos también inicializar una array con valores iguales rápidamente de la siguiente manera:
+
+```rust
+let a = [3; 5]; // en los 5 índices, habrás 3s.
+```
+
+Para acceder a los valores de la array:
+
+```rust
+let a = [1, 2, 3, 4, 5];
+
+let first = a[0];
+let second = a[1];
+```
+
