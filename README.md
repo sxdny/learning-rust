@@ -58,19 +58,23 @@ git clone example.org/someproject
 cd someproject
 cargo build
 ```
+
 ## Handle errors
+
 En este caso:
+
 ```rust
 let guess: u32 = guess.trim().parse() {
     Ok(num) => num,
     Err(_) => continue, // continue --> go to the next iteration of the loop
 }
 ```
+
 Si el usuario introduce un número, devolverá una variante `Ok` y seguirá con el programa. En cambio, si sale `Err`, se ejecutará `continue`. Esto irá a la siguiente interacción del loop (la siguiente interacción es introducir nuevamente el número)
 
 # Conocimientos básicos de la Programación en Rust
 
-## Variables e inmutabilidades-
+## Variables e inmutabilidades.
 
 Como hemos visto antes en el capítulo 2, las variables se pueden separar en dos grupos:
 
@@ -78,6 +82,7 @@ Como hemos visto antes en el capítulo 2, las variables se pueden separar en dos
 - Valores inmutables. Una vez asignado del valor, este no se podrá cambiar.
 
 Ejemplo:
+
 ```rust
 fn main() {
   let x = 5; // immutable variable
@@ -89,3 +94,32 @@ fn main() {
   println!("The value of y is: {}", y);
 }
 ```
+
+## Shadowing
+
+El shadowing sucede cuando declaramos otra variable con el mismo nombre, por lo
+que el compilador solo verá la última declaración que hayamos hecho.
+
+Si declaramos una variable varias veces, los valores siguiente no se resetearán,
+sino que se añadiran a la declaración de la variable. Ejemplo:
+
+```rust
+let x = 5; // aqui el valor es 5
+
+    let x = x + 1; // aqui el valor es 6 (toma el valor de la x anterior y le suma 1)
+
+    {
+        let x = x * 2; // aqui el valor es 12 (toma el valor de la x anterior y lo multiplica por 2)
+        println!("The value of x in the inner scope is: {x}");
+    }
+
+    // como estamos fuera del scope anterior, el valor de x es 6
+    println!("The value of x is: {x}");
+```
+
+El shadowing es diferente a hacer las variables mutables, ya que nos dará un error
+si intentamos cambiar el valor de una variable sin usar `let`. Por lo que podemos
+usar el let para hacer cambios a la variable y después si queremos dejarla inmutable.
+
+Otra diferencia es que, como tecnicamente estamos creando otra variable, podemos
+cambiar el tipo de valor de esta si que no de un error.
