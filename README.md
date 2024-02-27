@@ -212,3 +212,95 @@ let first = a[0];
 let second = a[1];
 ```
 
+# Funciones
+
+Como en JavaScript, no importa donde definas las funciones. Mientras estén definidas, todo bien.
+
+```rust
+fn main() {
+    another_function(5);
+}
+
+fn another_function(x: i32) {
+    println!("The value of x is: {x}");
+}
+```
+
+También les podremos pasar parámetros a las funciones, siempre y cuando definamos el tipo de valor que estas van a recibir:
+
+```rust
+fn main() {
+    print_labeled_measurement(5, 'h');
+}
+
+fn print_labeled_measurement(value: i32, unit_label: char) {
+    println!("The measurement is: {value}{unit_label}");
+}
+```
+
+## Devolver valores de una función
+
+Para devolver valorse en una función, no tenemos `return`, sino que usaremos una flecha: `->` para indicar que la función devuelve un valor:
+
+```rust
+fn five() -> i32 {
+    5
+}
+
+fn main() {
+    let x = five();
+
+    println!("The value of x is: {x}");
+}
+```
+
+Esto de arriba, es lo mismo que hacer un:
+
+```rust
+let x = 5
+```
+
+Hay que tener cuidado, ya que si ponemos un `;` al final, el valor ya no se devolverá:
+
+```rust
+fn main() {
+    let x = plus_one(5);
+
+    println!("The value of x is: {x}");
+}
+
+fn plus_one(x: i32) -> i32 {
+    x + 1; // <-- No devolverá el valor
+}
+```
+
+# Flow Control
+
+Podemos usar también `if else` en las declaraciones:
+
+```rust
+fn main() {
+    let condition = true;
+    let number = if condition { 5 } else { 6 };
+
+    println!("The value of number is: {number}");
+}
+```
+
+Importante tener en cuenta que los dos valores del `if` tienen que ser los mismo, sino nos dará un error de código.
+
+# Loops
+
+Lo único a destacar de esta parte es que podemos usar un `.rev()` para recorrer un elemento al revés:
+
+```rust
+fn main() {
+    for number in (1..4).rev() {
+        println!("{number}!"); // 4, 3, 2, 1...
+    }
+    println!("LIFTOFF!!!");
+}
+```
+
+
+
